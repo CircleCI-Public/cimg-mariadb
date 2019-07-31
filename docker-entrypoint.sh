@@ -70,7 +70,7 @@ if [ "$1" = 'mysqld' -a -z "$wantHelp" -a "$(id -u)" = '0' ]; then
 	DATADIR="$(_get_config 'datadir' "$@")"
 	mkdir -p "$DATADIR"
 	find "$DATADIR" \! -user mysql -exec chown mysql '{}' +
-	exec gosu mysql "$BASH_SOURCE" "$@"
+	exec mysql "$BASH_SOURCE" "$@"
 fi
 
 if [ "$1" = 'mysqld' -a -z "$wantHelp" ]; then
