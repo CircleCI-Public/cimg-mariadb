@@ -1,8 +1,8 @@
 <div align="center">
 	<p>
-		<img alt="CircleCI Logo" src="https://raw.github.com/CircleCI-Public/cimg-mariadb/main/img/circle-circleci.svg?sanitize=true" width="75" />
-		<img alt="Docker Logo" src="https://raw.github.com/CircleCI-Public/cimg-mariadb/main/img/circle-docker.svg?sanitize=true" width="75" />
-		<img alt="MariaDB Logo" src="https://raw.github.com/CircleCI-Public/cimg-mariadb/main/img/circle-mariadb.svg?sanitize=true" width="75" />
+		<img alt="CircleCI Logo" src="img/circle-circleci.svg?raw=true" width="75" />
+		<img alt="Docker Logo" src="img/circle-docker.svg?raw=true" width="75" />
+		<img alt="MariaDB Logo" src="img/circle-mariadb.svg?raw=true" width="75" />
 	</p>
 	<h1>CircleCI Convenience Images => MariaDB</h1>
 	<h3>A Continuous Integration focused MariaDB Docker image built to run on CircleCI</h3>
