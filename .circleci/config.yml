@@ -20,9 +20,9 @@ jobs:
           name: "Build Docker Images"
           command: ./build-images.sh
       - deploy:
-          name: "Publish Docker Images (master branch only)"
+          name: "Publish Docker Images (main branch only)"
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "main" ]; then
               echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
               docker push cimg/mariadb
             fi
