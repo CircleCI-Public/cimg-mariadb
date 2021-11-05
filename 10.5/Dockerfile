@@ -1,8 +1,8 @@
-FROM cimg/%%PARENT%%:2021.10
+FROM cimg/base:2021.10
 
 LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
 
-ENV MARIADB_VERSION=%%VERSION_FULL%%
+ENV MARIADB_VERSION=10.5.12
 
 USER root
 
