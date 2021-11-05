@@ -19,7 +19,7 @@ RUN	rm -rf /var/lib/mysql && \
 	chmod 777 /var/run/mysqld && \
 	find /etc/mysql/ -name '*.cnf' -print0 \
 		| xargs -0 grep -lZE '^(bind-address|log|user\s)' \
-		| xargs -rt -0 sed -Ei 's/^(bind-address|log|user\s)/#&/'
+		| xargs -rt -0 sed -Ei 's/^(bind-address|log|user\s)/#&/' || true
 
 RUN mkdir /docker-entrypoint-initdb.d
 
@@ -36,4 +36,4 @@ ENV MYSQL_ROOT_HOST=% \
 ENTRYPOINT ["docker-entrypoint.sh"]
 STOPSIGNAL SIGINT
 EXPOSE 3306
-CMD ["mariadbd"]
+CMD ["mysqld"]
