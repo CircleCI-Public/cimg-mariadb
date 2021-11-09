@@ -35,13 +35,13 @@ jobs:
   build:
     docker:
       - image: cimg/go:1.17
-      - image: cimg/mariadb:10.6
+      - image: cimg/mariadb:10.6.4
     steps:
       - checkout
 ```
 
 In the above example, the CircleCI Go Docker image is used for the primary container while the MariaDB image is used as a secondary.
-More specifically, the tag `10.6` is used meaning the version of MariaDB will be v10.6.
+More specifically, the tag `10.6.4` is used meaning the version of MariaDB will be v10.6.4.
 You can now connect to a MariaDB instance from the primary image within the steps for this job.
 
 
@@ -105,19 +105,19 @@ git clone --recurse-submodules git@github.com:CircleCI-Public/cimg-mariadb.git
 ### Generating Dockerfiles
 
 Dockerfiles can be generated for a specific MariaDB version using the `gen-dockerfiles.sh` script.
-For example, to generate the Dockerfile for v10.6, you would run the following from the root of the repo:
+For example, to generate the Dockerfile for v10.6.4, you would run the following from the root of the repo:
 
 ```bash
-./shared/gen-dockerfiles.sh 10.6
+./shared/gen-dockerfiles.sh 10.6.4
 ```
 
-The generated Dockerfile will be located at `./10.6/Dockefile`.
+The generated Dockerfile will be located at `./10.6.4/Dockefile`.
 To build this image locally and try it out, you can run the following:
 
 ```bash
-cd 10.6
-docker build -t test/mariadb:10.6 .
-docker run -it test/mariadb:10.6 bash
+cd 10.6.4
+docker build -t test/mariadb:10.6.4 .
+docker run -it test/mariadb:10.6.4 bash
 ```
 
 ### Building the Dockerfiles
