@@ -2,16 +2,16 @@ FROM cimg/base:2021.10
 
 LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
 
-ENV MARIADB_VERSION=10.6.5
+ENV MARIADB_VERSION=10.6.4
 
 USER root
 
-RUN	apt-get update && \
-	apt-key adv --recv-keys \
+RUN	apt-key adv --recv-keys \
 		--keyserver hkp://keyserver.ubuntu.com:80 \
 		0xF1656F24C74CD1D8 && \
 	add-apt-repository "deb http://archive.mariadb.org/mariadb-${MARIADB_VERSION}/repo/ubuntu/ $(lsb_release -sc) main" && \
-	apt-get install mariadb-server gosu
+	apt-get install mariadb-server gosu && \
+	rm -rf /var/lib/apt/lists/*
 
 RUN	rm -rf /var/lib/mysql && \
 	mkdir -p /var/lib/mysql /var/run/mysqld && \
@@ -21,13 +21,13 @@ RUN	rm -rf /var/lib/mysql && \
 		| xargs -0 grep -lZE '^(bind-address|log|user\s)' \
 		| xargs -rt -0 sed -Ei 's/^(bind-address|log|user\s)/#&/' || true
 
-RUN mkdir /docker-entrypoint-initdb.d
-
 COPY docker-entrypoint.sh /usr/local/bin/
-RUN ln -s usr/local/bin/docker-entrypoint.sh / # backwards compat
 
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh && \
-	chown -R mysql:mysql /usr/local/bin/docker-entrypoint.sh
+# symlink for backwards compatiblity
+RUN ln -s usr/local/bin/docker-entrypoint.sh / && \
+	chmod +x /usr/local/bin/docker-entrypoint.sh && \
+	chown -R mysql:mysql /usr/local/bin/docker-entrypoint.sh && \
+	mysql --version | grep "${MARIADB_VERSION}"
 
 ENV MYSQL_ROOT_HOST=% \
 	MYSQL_ALLOW_EMPTY_PASSWORD=true \
