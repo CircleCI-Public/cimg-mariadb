@@ -2,7 +2,7 @@ FROM cimg/base:2021.10
 
 LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
 
-ENV MARIADB_VERSION=10.4.22
+ENV MARIADB_VERSION=10.4.21
 
 USER root
 
@@ -27,7 +27,7 @@ COPY docker-entrypoint.sh /usr/local/bin/
 RUN ln -s usr/local/bin/docker-entrypoint.sh / && \
 	chmod +x /usr/local/bin/docker-entrypoint.sh && \
 	chown -R mysql:mysql /usr/local/bin/docker-entrypoint.sh && \
-	mariadb --version | grep "${MARIADB_VERSION}"
+	mysql --version | grep "${MARIADB_VERSION}"
 
 ENV MYSQL_ROOT_HOST=% \
 	MYSQL_ALLOW_EMPTY_PASSWORD=true \
