@@ -2,7 +2,7 @@ FROM cimg/base:2021.10
 
 LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
 
-ENV MARIADB_VERSION=10.3.32
+ENV MARIADB_VERSION=10.3.31
 
 USER root
 
@@ -19,7 +19,8 @@ RUN	rm -rf /var/lib/mysql && \
 	chmod 777 /var/run/mysqld && \
 	find /etc/mysql/ -name '*.cnf' -print0 \
 		| xargs -0 grep -lZE '^(bind-address|log|user\s)' \
-		| xargs -rt -0 sed -Ei 's/^(bind-address|log|user\s)/#&/' || true
+		| xargs -rt -0 sed -Ei 's/^(bind-address|log|user\s)/#&/' || true && \
+	mkdir /docker-entrypoint-initdb.d
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
