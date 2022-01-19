@@ -3,3 +3,4 @@
 repository=mariadb
 parent=base
 variants=()
+namespace=cimg
