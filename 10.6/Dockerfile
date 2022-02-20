@@ -1,8 +1,12 @@
-FROM cimg/base:2021.10
+# vim:set ft=dockerfile:
+
+# Do not edit individual Dockerfiles manually. Instead, please make changes to the Dockerfile.template, which will be used by the build script to generate Dockerfiles.
+
+FROM cimg/base:2022.01
 
 LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
 
-ENV MARIADB_VERSION=10.6.5
+ENV MARIADB_VERSION=10.6.7
 
 USER root
 
