@@ -6,7 +6,7 @@ FROM cimg/base:2022.01
 
 LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
 
-ENV MARIADB_VERSION=10.5.15
+ENV MARIADB_VERSION=10.5.16
 
 USER root
 
