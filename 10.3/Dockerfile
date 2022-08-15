@@ -2,11 +2,11 @@
 
 # Do not edit individual Dockerfiles manually. Instead, please make changes to the Dockerfile.template, which will be used by the build script to generate Dockerfiles.
 
-FROM cimg/base:2022.01
+FROM cimg/base:2022.08
 
 LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
 
-ENV MARIADB_VERSION=10.3.35
+ENV MARIADB_VERSION=10.3.36
 
 USER root
 
