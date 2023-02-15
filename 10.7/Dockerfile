@@ -2,16 +2,15 @@
 
 # Do not edit individual Dockerfiles manually. Instead, please make changes to the Dockerfile.template, which will be used by the build script to generate Dockerfiles.
 
-# By policy, the base image tag should be a quarterly tag unless there's a 
-# specific reason to use a different one. This means January, April, July, or 
+# By policy, the base image tag should be a quarterly tag unless there's a
+# specific reason to use a different one. This means January, April, July, or
 # October.
 
-# NOTE: This uses November due to an OpenSSL CVE fix. We will resume using quarterly versions of cimg-base in Q1
-FROM cimg/base:2022.11
+FROM cimg/base:2023.01
 
 LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
 
-ENV MARIADB_VERSION=10.7.7
+ENV MARIADB_VERSION=10.7.8
 
 USER root
 
@@ -19,7 +18,7 @@ RUN	apt-key adv --recv-keys \
 		--keyserver hkp://keyserver.ubuntu.com:80 \
 		0xF1656F24C74CD1D8 && \
 	add-apt-repository "deb http://archive.mariadb.org/mariadb-${MARIADB_VERSION}/repo/ubuntu/ $(lsb_release -sc) main" && \
-	apt-get install mariadb-server gosu && \
+	apt-get install mariadb-server gosu pwgen && \
 	rm -rf /var/lib/apt/lists/*
 
 RUN	rm -rf /var/lib/mysql && \
