@@ -4,3 +4,4 @@ repository=mariadb
 parent=base
 variants=()
 namespace=cimg
+arm64=1
