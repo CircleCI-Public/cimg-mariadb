@@ -6,11 +6,11 @@
 # specific reason to use a different one. This means January, April, July, or
 # October.
 
-FROM cimg/base:2023.01
+FROM cimg/base:2023.07
 
-LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
+LABEL maintainer="CircleCI Execution Team <eng-execution@circleci.com>"
 
-ENV MARIADB_VERSION=10.4.28
+ENV MARIADB_VERSION=10.4.33
 
 USER root
 
